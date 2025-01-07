@@ -7,9 +7,14 @@ public class Target : MonoBehaviour
     private Rigidbody rb;
     public Vector2 randomForce, randomTorque;
     public float xRange = 4.5f;
+    [SerializeField] int scoreChange, livesChange;
+    public GameObject explosionParticle;
+    [SerializeField] Color myColor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GetComponent<MeshRenderer>().material.color = myColor;
         //gets access to the current rigid body
         rb = GetComponent<Rigidbody>();
 
@@ -28,12 +33,17 @@ public class Target : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (transform.tag == "Good") FindFirstObjectByType<GameManager>().score++;
-        else FindFirstObjectByType<GameManager>().lives--;
-
+        FindFirstObjectByType<GameManager>().updateUI(scoreChange, livesChange);
+        Destroy(Instantiate(explosionParticle, transform.position, Quaternion.identity), 5);
 
         Destroy(gameObject);
     }
-
+    /*
+     * Your journey with starting a studio as a student. What made you do it, How did you get a team together, etc
+     * Continuing with Moss Monkey after uni, how does one approach publishers or funding, any tips?
+     * How is the industry currently for indie game developers
+     * Your experience with the Global Game Jam
+     * Any tips or things to consider while participating in a game jam like this. Thinking about scope, ideation, project and time management
+     * */
     
 }

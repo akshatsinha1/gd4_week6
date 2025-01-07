@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver;
 
+    public TMP_Text scoreText, livesText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,7 +25,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void updateUI(int scoreChange, int livesChanged)
+    {
+        score += scoreChange;
+        lives += livesChanged;
+        scoreText.text = "Score: " + score;
+        livesText.text = "Lives: " + lives;
+
+        if (lives <= 0)
+        {
+            isGameOver = true;
+        }
     }
 
     IEnumerator spawnObjects()

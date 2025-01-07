@@ -152,3 +152,7 @@ MonoBehaviour:
   randomForce: {x: 7, y: 15}
   randomTorque: {x: 10, y: 30}
   xRange: 4.5
+  scoreChange: -2
+  livesChange: -1
+  explosionParticle: {fileID: 3371569193385938658, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
+  myColor: {r: 1, g: 0, b: 0, a: 1}
